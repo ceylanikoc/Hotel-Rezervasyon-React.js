@@ -1,0 +1,84 @@
+$xxxs : 374;
+$xxs : 424;
+$xs : 575;
+$sm : 767;
+$md : 991;
+$lg : 1199;
+$xlg : 1441;
+$xxlg : 1681;
+$gutter:15px;
+
+@mixin max($breakpoint) {
+	@media (max-width: $breakpoint + px) {
+		@content;
+	}
+}
+
+@mixin min($breakpoint) {
+	@media (min-width: ($breakpoint + 1) + px) {
+		@content;
+	}
+}
+
+.container {
+	padding-right: $gutter;
+	padding-left: $gutter;
+}
+
+.row {
+	margin-right: -$gutter;
+	margin-left: -$gutter;
+	.col,
+	[class*="col-"] {
+		padding-right: $gutter;
+		padding-left: $gutter;
+    }
+    @include max($sm) {
+        margin-right: -$gutter/2;
+        margin-left: -$gutter/2;
+        .col,
+        [class*="col-"] {
+            padding-right: $gutter/2;
+            padding-left: $gutter/2;
+        }
+    }
+	&.no-gutters {
+		margin-right: 0;
+		margin-left: 0;
+		> .col,
+		> [class*="col-"] {
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+}
+
+
+.btn {
+	&.btn-primary {
+		color: #fff;
+		background: #487eb0;
+        border-color:#40739e;
+		&:not(.btn-loading):active,
+		&:not(.btn-loading).active,
+		&:not(.btn-loading):hover,
+		&:not(.btn-loading).hover,
+		&:not([disabled]):not(.disabled):active,
+		&:not([disabled]):not(.disabled).active {
+			background: #40739e;
+			color: #fff;
+            border-color:#40739e;
+		}
+	}
+	&.btn-secondary {
+		color: #000;
+		background: #f1f0f1;
+		&:not(.btn-loading):active,
+		&:not(.btn-loading).active,
+		&:not(.btn-loading):hover,
+		&:not(.btn-loading).hover {
+			color: #000;
+			background: darken(#f1f0f1, 10%);
+		}
+	}
+}
