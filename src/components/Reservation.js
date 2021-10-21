@@ -25,8 +25,8 @@ export class Reservation extends Component {
         steps: 1,
         name: null,
         city: null,
-        startDate: new Date().toLocaleDateString(),
-        endDate: new Date().toLocaleDateString(),
+        startDate: new Date().toISOString(),
+        endDate: new Date().toISOString(),
         adult: 1,
         child: 0,
         room_type: [],
@@ -672,7 +672,7 @@ export class Reservation extends Component {
                     this.setState({
                       choseHotel: {
                         ...this.state.choseHotel,
-                        startDate: date.toLocaleDateString(),
+                        startDate: date.toISOString(),
                       },
                     })
                   }
@@ -690,7 +690,7 @@ export class Reservation extends Component {
                     this.setState({
                       choseHotel: {
                         ...this.state.choseHotel,
-                        endDate: date.toLocaleDateString(),
+                        endDate: date.toISOString(),
                       },
                     })
                   }
@@ -724,11 +724,17 @@ export class Reservation extends Component {
               <div className="reservation-otel-detail">
                 <div>
                   <b>Giriş Tarihi: </b>
-                  {this.state.choseHotel.startDate} <span>-</span>
+                  {new Date(
+                    this.state.choseHotel.startDate
+                  ).toLocaleDateString()}{" "}
+                  <span>-</span>
                 </div>
                 <div>
                   <b>Çıkış Tarihi: </b>
-                  {this.state.choseHotel.endDate} <span>-</span>
+                  {new Date(
+                    this.state.choseHotel.endDate
+                  ).toLocaleDateString()}{" "}
+                  <span>-</span>
                 </div>{" "}
                 <div>
                   <b>Yetişkin: </b> {this.state.choseHotel.adult}
@@ -765,11 +771,19 @@ export class Reservation extends Component {
                     <div className="payment-info-boxes">
                       <div className="box">
                         <div className="title">Giriş Tarihi:</div>
-                        <span>{this.state.choseHotel.startDate}</span>
+                        <span>
+                          {new Date(
+                            this.state.choseHotel.startDate
+                          ).toLocaleDateString()}
+                        </span>
                       </div>
                       <div className="box">
                         <div className="title">Çıkış Tarihi:</div>
-                        <span>{this.state.choseHotel.startDate}</span>
+                        <span>
+                          {new Date(
+                            this.state.choseHotel.startDate
+                          ).toLocaleDateString()}
+                        </span>
                       </div>
                       <div className="box">
                         <div className="title">Yetişkin:</div>
@@ -870,11 +884,19 @@ export class Reservation extends Component {
                 <div className="hotel-info">
                   <div className="box-info">
                     <span>Giriş Tarihi :</span>
-                    <span>{this.state.choseHotel.startDate}</span>
+                    <span>
+                      {new Date(
+                        this.state.choseHotel.startDate
+                      ).toLocaleDateString()}
+                    </span>
                   </div>
                   <div className="box-info">
                     <span>Çıkış Tarihi :</span>
-                    <span>{this.state.choseHotel.endDate}</span>
+                    <span>
+                      {new Date(
+                        this.state.choseHotel.endDate
+                      ).toLocaleDateString()}
+                    </span>
                   </div>
                   <div className="box-info">
                     <span>Yetişkin :</span>
